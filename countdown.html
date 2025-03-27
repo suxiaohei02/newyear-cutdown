@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .countdown {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #6B46C1, #4299E1);
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        #timer {
+            font-size: 2em;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <h2>2025年度倒计时</h2>
+        <div id="timer"></div>
+        <div>直到新年</div>
+    </div>
+
+    <script>
+        function updateTimer() {
+            const targetDate = new Date('2026-01-01T00:00:00'); // 目标日期
+            const now = new Date();
+            
+            const diff = targetDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('timer').innerHTML = 
+                `${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
